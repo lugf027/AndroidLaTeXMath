@@ -1,6 +1,6 @@
 #include "config.h"
 
-#ifdef __OS_Android__
+//#ifdef __OS_Android__
 
 #include "jni_def.h"
 #include "jni_log.h"
@@ -87,7 +87,7 @@ shared_ptr<Font> Font::_create(const string& name, int style, float size) {
 
 /******************************************* Text layout ******************************************/
 
-void TextLayout_Android::getBounds(_out_ Rect& bounds) {
+void TextLayout_Android::getBounds(Rect& bounds) {
     JNIEnv* env = getJNIEnv();
     shared_ptr<_jobject> jfont = static_cast<Font_Android*>(_font.get())->getJavaFont();
     jstring str = env->NewStringUTF(wide2utf8(_txt.c_str()).c_str());
@@ -299,4 +299,4 @@ void Graphics2D_Android::fillRoundRect(float x, float y, float w, float h, float
     makeRecord(ACT_fillRoundRect, NULL, p, 6);
 }
 
-#endif  // __OS_Android__
+//#endif  // __OS_Android__

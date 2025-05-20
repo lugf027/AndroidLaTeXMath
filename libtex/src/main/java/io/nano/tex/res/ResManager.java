@@ -18,27 +18,34 @@ import java.util.List;
  * Created by nano on 18-11-10
  */
 public final class ResManager {
-
     private static final String TAG = "ResManager";
 
     private String rootDir;
 
     public ResManager(Context context) {
         rootDir = context.getFilesDir().getPath() + File.separator + "tex";
+        Log.i(TAG, "Root directory path: " + rootDir);  // 添加这行来打印绝对路径
     }
 
     public String getResourcesRootDirectory() {
         return rootDir;
     }
 
+    public List<String> getResourceFiles() {
+        return listRes();
+    }
+
     private List<String> listRes() {
         InputStream is = ResManager.class.getResourceAsStream("RES_README");
+        if (is == null) {
+            return new ArrayList<>();
+        }
         BufferedReader in = new BufferedReader(new InputStreamReader(is));
         String line;
         List<String> res = new ArrayList<>();
         try {
             while ((line = in.readLine()) != null) res.add(line);
-        } catch (IOException e) {
+        } catch (Exception e) {
             Log.e(TAG, "Failed to read resources", e);
         } finally {
             try {

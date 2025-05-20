@@ -53,6 +53,7 @@ public class TeXView extends View {
     }
 
     public void invalidateRender() {
+        if (render == null) return;
         render.invalidateDrawingCache();
         invalidate();
     }

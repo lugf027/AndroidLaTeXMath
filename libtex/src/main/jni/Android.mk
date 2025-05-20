@@ -12,7 +12,7 @@ LOCAL_CFLAGS := \
 	-Os
 
 LOCAL_CPPFLAGS := \
-    -std=gnu++0x \
+    -std=c++14 \
     -fvisibility=hidden \
     -ffunction-sections \
     -fdata-sections \

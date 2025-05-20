@@ -1,6 +1,6 @@
 #include "config.h"
 
-#ifdef __OS_Android__
+//#ifdef __OS_Android__
 
 #ifndef GRAPHICS_ANDROID_INCLUDED
 #define GRAPHICS_ANDROID_INCLUDED
@@ -9,6 +9,7 @@
 #include "graphic/graphic.h"
 
 using namespace tex;
+using namespace std;
 
 class Font_Android : public Font {
 private:
@@ -43,7 +44,7 @@ public:
     TextLayout_Android(const wstring& txt, const shared_ptr<Font> font)
         : _txt(txt), _font(font) {}
 
-    virtual void getBounds(_out_ Rect& bounds) override;
+    virtual void getBounds(Rect& bounds) override;
     virtual void draw(Graphics2D& g2, float x, float y) override;
 };
 
@@ -89,4 +90,4 @@ public:
 };
 
 #endif  // GRAPHICS_ANDROID_INCLUDED
-#endif  // __OS_Android__
+//#endif  // __OS_Android__

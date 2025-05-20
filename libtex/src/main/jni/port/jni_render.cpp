@@ -1,6 +1,6 @@
 #include "config.h"
 
-#ifdef __OS_Android__
+//#ifdef __OS_Android__
 
 #include "graphics_android.h"
 #include "jni_def.h"
@@ -57,12 +57,12 @@ static void TeXRender_setForeground(JNIEnv* env, jclass clazz, jlong ptr, jint c
 
 static void TeXRender_setWidth(JNIEnv* env, jclass clazz, jlong ptr, jint width, jint align) {
     TeXRender* r = reinterpret_cast<TeXRender*>(ptr);
-    r->setWidth(width, align);
+    r->setWidth(width, static_cast<tex::Alignment>(align));
 }
 
 static void TeXRender_setHeight(JNIEnv* env, jclass clazz, jlong ptr, jint height, jint align) {
     TeXRender* r = reinterpret_cast<TeXRender*>(ptr);
-    r->setHeight(height, align);
+    r->setHeight(height,  static_cast<tex::Alignment>(align));
 }
 
 static void TeXRender_finalize(JNIEnv* env, jclass clazz, jlong ptr) {
@@ -89,4 +89,4 @@ int registerTeXRender(JNIEnv* env) {
         env, "io/nano/tex/TeXRender", sMethods, NELEM(sMethods));
 }
 
-#endif  // __OS_Android__
+//#endif  // __OS_Android__
